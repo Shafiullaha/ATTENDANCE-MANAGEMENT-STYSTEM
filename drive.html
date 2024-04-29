@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Layout</title>
+<style>
+    body{
+        background-image: url("background.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items horizontally */
+    align-items: flex-start; /* Align items at the top */
+  }
+  .image-container {
+    text-align: center;
+    margin: 10px;
+    width: calc(33.33% - 20px); /* 33.33% width for each column with margin */
+  }
+  .image {
+    width: 100%;
+    max-width: 300px; /* Limit image width */
+    height: auto;
+  }
+  .content {
+    color: white;
+    font-size: 24px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="image-container">
+    <img class="image" src="11.png" alt="Image 1">
+    <div class="content">
+      <h3>REACT</h3>
+    </div>
+  </div>
+  <div class="image-container">
+    <img class="image" src="12.png" alt="Image 2">
+    <div class="content">
+      <h3>REDUX</h3>
+    </div>
+  </div>
+  <div class="image-container">
+    <img class="image" src="13.png" alt="Image 3">
+    <div class="content">
+      <h3>JAVASCRIPT</h3>
+    </div>
+  </div>
+  <div class="content">
+    <p>Web Development</p>
+  </div>
+  <div class="image-container">
+    <img class="image" src="18.jpg" alt="Image 4">
+    <div class="content">
+      <h3>BOOTSTRAP</h3>
+    </div>
+  </div>
+  <div class="image-container">
+    <img class="image" src="17.jpg" alt="Image 5">
+    <div class="content">
+      <h3>CSS3</h3>
+    </div>
+  </div>
+  <div class="image-container">
+    <img class="image" src="16.png" alt="Image 6">
+    <div class="content">
+      <h3>HTML5</h3>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    // Select the first three images
+    var $firstThreeImages = $(".container .image-container:lt(3)");
+    // Move the first three images to the top
+    $firstThreeImages.css("order", "-1"); // Move to the beginning of flex container
+  });
+</script>
+
+</body>
+</html>

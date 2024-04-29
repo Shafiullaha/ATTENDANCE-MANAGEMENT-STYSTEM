@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #app {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #007bff;
+  }
+  
+  #description {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  #show-team-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #show-team-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  #team-section,
+  #values,
+  #mission,
+  #vision,
+  #history,
+  #achievements,
+  #future-goals {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  #team-section {
+    display: none;
+  }
+  
+  #team-members {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #team-members li {
+    margin-bottom: 10px;
+  }
+  
+  #values ul,
+  #history,
+  #achievements,
+  #future-goals {
+    margin-left: 20px;
+  }
+  
+  #values li {
+    margin-bottom: 5px;
+  }
+  
+  #values,
+  #mission,
+  #vision,
+  #history,
+  #achievements,
+  #future-goals {
+    background-color: #f0f0f0;
+  }
+  
+  .section-title {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .section-content {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page with Attendance Check</title>
+<link rel="stylesheet" href="styles.css"> 
+<script src="attendanceChecker.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <h1>Check Attendance Percentage<h1>
+    <form id="loginForm" class="login-form">
+        <input type="text" placeholder="Roll Number" id="rollNo" required>
+        <input type="email" placeholder="Email" id="email" required>
+        <select id="department" required>
+            <option value="" disabled selected>Select Department</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Electrical Engineering">Electrical Engineering</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+        </select>
+        <button type="submit" class="login-btn">Check</button>
+    </form>
+</div>
+</body>
+</html>

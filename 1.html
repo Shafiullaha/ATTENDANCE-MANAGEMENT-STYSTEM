@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery AJAX Example</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<button id="fetchDataBtn">Fetch Data</button>
+<div id="responseData"></div>
+
+<script>
+$(document).ready(function() {
+    $('#fetchDataBtn').click(function() {
+        $.ajax({
+            url: 'example.php',
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                $('#responseData').text(JSON.stringify(response));
+            },
+            error: function(xhr, status, error) {
+                $('#responseData').text('Error: ' + error);
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance Management System</title>
+</head>
+<body>
+
+<button id="fetchAttendanceBtn">Fetch Attendance</button>
+<div id="attendanceData"></div>
+
+<script>
+document.getElementById('fetchAttendanceBtn').addEventListener('click', function() {
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                document.getElementById('attendanceData').innerHTML = JSON.stringify(response);
+            } else {
+                document.getElementById('attendanceData').innerHTML = 'Error: ' + xhr.status;
+            }
+        }
+    };
+    
+    xhr.open('GET', 'fetch_attendance.php', true);
+    xhr.send();
+});
+</script>
+
+</body>
+</html>

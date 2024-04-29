@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   
+    <style>
+        body {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('background2.jpg') center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+            margin-top: 100px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .login-container h2 {
+            color: #3498db;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-color: #2980b9;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            border: none;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .mt-2 {
+            text-align: center;
+            color: #fff;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+        .error-message {
+            color: #ff0000;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Attendance System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="prec.html">Check Percentage</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Forms.html">Feedback Form</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="attendance.html">Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Log.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="login-container">
+            <h2>Attendance Login</h2>
+            <form id="attendance-login">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" placeholder="Your Name" name="name">
+                    <div id="name-error-message" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Your Email Address" name="email">
+                    <div id="email-error-message" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                    <div id="password-error-message" class="error-message"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <p class="mt-2">Don't have an account? <a href="signup.html">Sign up</a></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#attendance-login').submit(function (event) {
+                event.preventDefault();
+                console.log("Form submitted"); 
+                $('#name-error-message').text('');
+                $('#email-error-message').text('');
+                $('#password-error-message').text('');
+                var name = $('#name').val();
+                var email = $('#email').val();
+                var password = $('#password').val();
+                console.log("Name:", name); 
+                console.log("Email:", email); 
+                console.log("Password:", password); 
+                var flag = true;
+
+
+                if (flag) {
+                    console.log("Validation passed"); 
+                   
+                    $.ajax({
+                        type: "POST",
+                        url: "login1.php", 
+                        data: { name: name, email: email, password: password },
+                        success: function(response) {
+                            console.log("Server response:", response); 
+                            if (response === "success") {
+                                console.log("Redirecting to success.html");
+                                window.location.href = "success.html";
+                            } else {
+                                alert("Incorrect login credentials. Please try again or sign up.");
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                            alert("An error occurred. Please try again later.\n" + xhr.responseText);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
